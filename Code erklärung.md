@@ -22,3 +22,69 @@ const priority = document.getElementById("priority").value;
 ```
 Die Werte aus den inputfeldern (name, email, phone, service, priority) werden abgerufen und in die Variablen gespeichert.
 so Können  wir die daten später ausslesen unhd posten.
+
+## Abschnitt 4: 
+```javascript
+const priorityDays = {
+    "Tief": 12,
+    "Standard": 7,
+    "Express": 5
+};
+```
+Ein Objekt wird erstellt, das für jede Priorität (Tief, Standard, Express) eine Anzahl von Tagen enthält, die zu einem bestimmten Datum hinzugerechnet werden.
+
+## Abschnitt 5: 
+```javascript 
+const today = new Date();
+today.setDate(today.getDate() + priorityDays[priority]);
+```
+Ein neues Datum (today) wird erstellt, das den aktuellen Tag repräsentiert.
+Basierend auf der gewählten Priorität wird die Anzahl der Tage (aus dem priorityDays-Objekt) zum aktuellen Datum hinzugefügt.
+
+## Abschnitt 6: 
+```javascript 
+const pickupDate = today.toISOString().split('T')[0];
+```
+Das Datum wird in ISO-Format (z.B. "2024-11-20T12:34:56.789Z") umgewandelt und anschließend mit .split('T')[0] nur das Datum (ohne Uhrzeit) extrahiert.
+
+## Abschnitt 7:
+```javascript
+const data = {
+    name,
+    email,
+    phone,
+    service,
+    priority,
+    created_at: new Date().toISOString().split('T')[0],
+    pickup_date: pickupDate
+};
+```
+Ein data-Objekt wird erstellt, das alle erfassten Formulardaten enthält.
+Zusätzlich wird das Erstellungsdatum (created_at) in einem ähnlichen Format wie das Pickup-Datum gespeichert.
+
+## Abschnitt 8: 
+```javascript
+console.log(data);
+```
+Die erstellten Daten werden in der Konsole ausgegeben, um zu überprüfen, was gesendet wird.
+
+## Abschnitt 9: 
+```javascript
+fetch("http://localhost:5000/api/registration", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+})
+```
+Eine POST-Anfrage wird an das Backend gesendet. Die URL http://localhost:5000/api/registration ist der Endpunkt, an den die Formulardaten gesendet werden.
+Der Content-Type-Header gibt an, dass die gesendeten Daten im JSON-Format sind.
+Der body enthält die Formulardaten, die in einen JSON-String umgewandelt werden.
+
+## Abschnitt 10: 
+```javascript
+.then(response => response.json())
+  .then(result => alert("Anmeldung erfolgreich!"))
+  .catch(error => console.error("Fehler:", error));
+```
+Wenn die Anfrage erfolgreich ist, wird die Antwort als JSON verarbeitet und eine Erfolgsmeldung angezeigt.
+Wenn ein Fehler auftritt, wird dieser in der Konsole protokolliert.
