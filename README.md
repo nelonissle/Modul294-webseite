@@ -4,6 +4,23 @@
 ![alt text](image.png)
 
 ---
+## Geleistete Vorarbeit  
+
+Im Rahmen der **Vorstudie** haben wir uns intensiv mit den Grundlagen und der Vorbereitung des Projekts beschäftigt. Die wichtigsten Punkte umfassen:  
+
+### 1. Analyse der aktuellen Lage  
+- Eine Situationsanalyse wurde durchgeführt, um die Anforderungen und Ziele des Projekts zu definieren.  
+- Es wurden Herausforderungen identifiziert, die speziell für die Umsetzung eines Ski-Service-Webshops relevant sind.  
+
+### 2. Erforschung von Optionen  
+- Verschiedene **Frameworks** wurden analysiert, um die bestmögliche technische Basis für das Projekt auszuwählen.  
+- Inspirationsquellen wie existierende **Webshops** und **Design-Ideen** wurden untersucht, um kreative und funktionale Impulse für die Gestaltung der Webseite zu erhalten.  
+
+## Design-Philosophie  
+Unsere Design-Philosophie basiert auf den Grundprinzipien von:  
+1. **Benutzerfreundlichkeit**  
+2. **Responsivität**  
+3. **Ästhetik**  
 
 ### Ziele:  
 - Ein **modernes** und **übersichtliches Interface** gestalten  
@@ -38,14 +55,6 @@ Dieser Shop simuliert typische Aufgaben und Herausforderungen eines modernen Web
 Ziel ist es, ein realitätsnahes Beispiel für die Praxisarbeit zu schaffen.  
 
 ---
-
-## Design-Philosophie  
-Unsere Design-Philosophie basiert auf den Grundprinzipien von:  
-1. **Benutzerfreundlichkeit**  
-2. **Responsivität**  
-3. **Ästhetik**  
-
-
 
 
 # Backend Code
