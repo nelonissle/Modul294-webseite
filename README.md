@@ -1,5 +1,18 @@
 # Modul294-Webseite  
-**Webseite für die Praxisarbeit**  
+**Planung der Arbeitschritte**  
+
+![alt text](image.png)
+
+---
+
+### Ziele:  
+- Ein **modernes** und **übersichtliches Interface** gestalten  
+- **Intuitive Bedienung** für Nutzer gewährleisten  
+- Die Farbgebung und das Layout so designen, dass sie die **winterliche Atmosphäre** eines Ski-Shops widerspiegeln  
+
+Dabei bleibt die **Funktionalität** stets im Fokus.  
+
+---
 
 ## Bootstrap-Integration  
 Um die Entwicklung effizient zu gestalten, haben wir uns für die Nutzung von **Bootstrap** entschieden.  
@@ -32,12 +45,8 @@ Unsere Design-Philosophie basiert auf den Grundprinzipien von:
 2. **Responsivität**  
 3. **Ästhetik**  
 
-### Ziele:  
-- Ein **modernes** und **übersichtliches Interface** gestalten  
-- **Intuitive Bedienung** für Nutzer gewährleisten  
-- Die Farbgebung und das Layout so designen, dass sie die **winterliche Atmosphäre** eines Ski-Shops widerspiegeln  
 
-Dabei bleibt die **Funktionalität** stets im Fokus.  
+
 
 # Backend Code
 
@@ -51,6 +60,8 @@ document.getElementById("serviceForm").addEventListener("submit", function(e) { 
 
 Der Code wartet auf das event, dass das Formular mit der ID serviceForm abgeschickt wird.
 Wenn das Formular abgeschickt wird, wird die angegebene Funktion ausgeführt.
+
+
 
 ## Abschnitt 2
 
