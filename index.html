@@ -7,9 +7,25 @@
     <title>Jetstream Skiservice</title>
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Hover-Effekt für Karten */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid #007bff;
+        }
+    </style>
+
 </head>
 
 <body>
+   
+   
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -91,27 +107,30 @@
     <div class="container my-5">
         <h2 class="text-center mb-4">Unsere Dienstleistungen</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Karte 1: Kleiner Service -->
             <div class="col">
-                <div class="card h-100">
-                    <img src="R.jpg" class="card-img-top" alt="Kleiner Service">
+                <div class="card h-100" onclick="window.location.href='form.html'">
+                    <img src="R.jpg" class="card-img-top" alt="Kleiner Service – Perfekte Wartung">
                     <div class="card-body">
                         <h5 class="card-title">Kleiner Service</h5>
                         <p class="card-text">Perfekte Wartung für den kleinen Bedarf.</p>
                     </div>
                 </div>
             </div>
+            <!-- Karte 2: Grosser Service -->
             <div class="col">
-                <div class="card h-100">
-                    <img src="R.jpg" class="card-img-top" alt="Großer Service">
+                <div class="card h-100" onclick="window.location.href='form.html'">
+                    <img src="R.jpg" class="card-img-top" alt="Grosser Service – Komplettpflege">
                     <div class="card-body">
-                        <h5 class="card-title">Großer Service</h5>
+                        <h5 class="card-title">Grosser Service</h5>
                         <p class="card-text">Komplette Pflege und Reparatur.</p>
                     </div>
                 </div>
             </div>
+            <!-- Karte 3: Rennski-Service -->
             <div class="col">
-                <div class="card h-100">
-                    <img src="R.jpg" class="card-img-top" alt="Rennski-Service">
+                <div class="card h-100" onclick="window.location.href='form.html'">
+                    <img src="R.jpg" class="card-img-top" alt="Rennski-Service – Höchste Performance">
                     <div class="card-body">
                         <h5 class="card-title">Rennski-Service</h5>
                         <p class="card-text">Maximale Performance für Profis.</p>
@@ -120,6 +139,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Call-to-Action -->
     <div class="bg-primary text-white text-center py-5">
