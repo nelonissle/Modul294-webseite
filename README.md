@@ -1,9 +1,11 @@
 # Modul294-Webseite  
-**Planung der Arbeitschritte**  
 
-![alt text](image.png)
+## **Planung der Arbeitschritte**
 
----
+![GANTT DIAGRAMM DER PLANUNG](image.png)
+
+
+<br><br>
 ## Geleistete Vorarbeit  
 
 Im Rahmen der **Vorstudie** haben wir uns intensiv mit den Grundlagen und der Vorbereitung des Projekts beschäftigt. Die wichtigsten Punkte umfassen:  
@@ -29,7 +31,7 @@ Unsere Design-Philosophie basiert auf den Grundprinzipien von:
 
 Dabei bleibt die **Funktionalität** stets im Fokus.  
 
----
+
 
 ## Bootstrap-Integration  
 Um die Entwicklung effizient zu gestalten, haben wir uns für die Nutzung von **Bootstrap** entschieden.  
@@ -42,7 +44,7 @@ Wir haben spezifische Elemente wie:
 
 ausgewählt, um ein ansprechendes und funktionales Design zu schaffen.  
 
----
+
 
 ## Thema der Webseite  
 Das zentrale Thema unserer Webseite ist ein **Mini-Shop**, der sich auf Ski-Service spezialisiert.  
@@ -54,8 +56,8 @@ Dieser Shop simuliert typische Aufgaben und Herausforderungen eines modernen Web
 
 Ziel ist es, ein realitätsnahes Beispiel für die Praxisarbeit zu schaffen.  
 
----
-
+<br><br>
+<br><br>
 
 # Backend Code
 

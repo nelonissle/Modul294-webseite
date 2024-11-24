@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jetstream Skiservice</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">Jetstream Skiservice</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Menü umschalten">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Startseite</a>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Startseite</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="form.html">Service anmelden</a>
@@ -41,40 +45,45 @@
     <!-- Carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="R.jpg" class="d-block w-100" alt="Ski-Service Bild 1">
+                <img src="R.jpg" class="d-block w-100" alt="Service für perfekte Ski">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Perfekter Service</h5>
                     <p>Wir machen deine Ski wieder fit!</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="R.jpg" class="d-block w-100" alt="Ski-Service Bild 2">
+                <img src="R.jpg" class="d-block w-100" alt="Hochwertige Ausrüstung für Ski">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Professionelle Ausrüstung</h5>
                     <p>Höchste Qualität für deine Ski.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="R.jpg" class="d-block w-100" alt="Ski-Service Bild 3">
+                <img src="R.jpg" class="d-block w-100" alt="Schneller Ski-Service">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Schneller Service</h5>
                     <p>Express-Service für eilige Skitage.</p>
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span class="visually-hidden">Vorherige</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span class="visually-hidden">Nächste</span>
         </button>
     </div>
 
@@ -93,9 +102,9 @@
             </div>
             <div class="col">
                 <div class="card h-100">
-                    <img src="R.jpg" class="card-img-top" alt="Grosser Service">
+                    <img src="R.jpg" class="card-img-top" alt="Großer Service">
                     <div class="card-body">
-                        <h5 class="card-title">Grosser Service</h5>
+                        <h5 class="card-title">Großer Service</h5>
                         <p class="card-text">Komplette Pflege und Reparatur.</p>
                     </div>
                 </div>
@@ -126,5 +135,9 @@
             <a href="contact.html" class="text-white text-decoration-none">Kontakt</a>
         </div>
     </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
