@@ -111,3 +111,97 @@ Der body enthält die Formulardaten, die in einen JSON-String umgewandelt werden
 
 Wenn die Anfrage erfolgreich ist, wird die Antwort als JSON verarbeitet und eine Erfolgsmeldung angezeigt.
 Wenn ein Fehler auftritt, wird dieser in der Konsole protokolliert.
+
+
+```html 
+<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+```
+Das ist der HTML LInk für Bootstrap 
+
+Und das ist der alte HTml Code für die Forms Page: 
+```html 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service-Anmeldung</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Jetstream Skiservice</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Menü umschalten">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Startseite</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="form.html">Service anmelden</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Kontakt</a>
+                    </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">Über Uns</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="text-center py-4 bg-primary text-white">
+        <h1>Service-Anmeldung</h1>
+    </header>
+    <main class="container mt-5">
+        <form id="serviceForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefon:</label>
+                <input type="tel" id="phone" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="service">Dienstleistung:</label>
+                <select id="service" class="form-control" required>
+                    <option>Kleiner Service</option>
+                    <option>Grosser Service</option>
+                    <option>Rennski-Service</option>
+                    <option>Bindung montieren und einstellen</option>
+                    <option>Fell zuschneiden</option>
+                    <option>Heisswachsen</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="priority">Priorität:</label>
+                <select id="priority" class="form-control" required>
+                    <option value="Tief">Tief (+5 Tage)</option>
+                    <option value="Standard">Standard (7 Tage)</option>
+                    <option value="Express">Express (-2 Tage)</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Absenden</button>
+        </form>
+    </main>
+    <footer class="text-center py-4 bg-dark text-white">
+        <p>&copy; 2024 Jetstream Skiservice</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
+```
