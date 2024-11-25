@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            margin: 0;
-            padding: 0;
+            
             background: url('ServiceIMG.jpg') no-repeat center center fixed;
             background-size: cover;
         }
         .form-container {
             background-color: rgba(255, 255, 255, 0.6); /* Weniger Deckkraft */
-            padding: 30px;
+            padding: 10px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
@@ -24,11 +23,28 @@
         }
         .navbar { 
             background-color: rgba(0, 0, 0, 0.432);
-            
+            display: flex;
+            justify-content: center;    
         }
         header { 
             padding-top: 20px;
         }
+        
+    .form-group {
+        flex: 1; /* Alle Elemente haben die gleiche Breite */
+        margin: 10px;
+    }
+    .form-row {
+        display: flex; /* Flexbox für horizontale Anordnung */
+        flex-wrap:var(-5px); /* Elemente umbrechen auf kleinen Bildschirmen */
+        gap: 10px; /* Abstand zwischen den Elementen */
+    }
+    button {
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+    }
+
     </style>
  
  
@@ -70,46 +86,74 @@
     <main class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
         <div class="form-container">
             <form id="serviceForm">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" class="form-control" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Vorname:</label>
+                        <input type="text" id="name" class="form-control" placeholder="Vorname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nachname:</label>
+                        <input type="text" id="name" class="form-control" placeholder="Nachname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail:</label>
+                        <input type="email" id="email" class="form-control" placeholder="Ihre E-Mail-Adresse" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon:</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Ihre Telefonnummer" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">E-Mail:</label>
-                    <input type="email" id="email" class="form-control" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="address">Adresse (optional):</label>
+                        <input type="text" id="address" class="form-control" placeholder="Straße, PLZ, Ort">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Dienstleistung:</label>
+                        <select id="service" class="form-control" required>
+                            <option disabled selected>Bitte wählen Sie eine Dienstleistung</option>
+                            <option>Kleiner Service</option>
+                            <option>Grosser Service</option>
+                            <option>Rennski-Service</option>
+                            <option>Bindung montieren und einstellen</option>
+                            <option>Fell zuschneiden</option>
+                            <option>Heisswachsen</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Priorität:</label>
+                        <select id="priority" class="form-control" required>
+                            <option value="Tief">Tief (+5 Tage)</option>
+                            <option value="Standard">Standard (7 Tage)</option>
+                            <option value="Express">Express (-2 Tage)</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Telefon:</label>
-                    <input type="tel" id="phone" class="form-control" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="appointment">Wunschtermin:</label>
+                        <input type="date" id="appointment" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">Besondere Wünsche:</label>
+                        <textarea id="comments" class="form-control" rows="3" placeholder="Zusätzliche Informationen..."></textarea>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="service">Dienstleistung:</label>
-                    <select id="service" class="form-control" required>
-                        <option>Kleiner Service</option>
-                        <option>Grosser Service</option>
-                        <option>Rennski-Service</option>
-                        <option>Bindung montieren und einstellen</option>
-                        <option>Fell zuschneiden</option>
-                        <option>Heisswachsen</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="priority">Priorität:</label>
-                    <select id="priority" class="form-control" required>
-                        <option value="Tief">Tief (+5 Tage)</option>
-                        <option value="Standard">Standard (7 Tage)</option>
-                        <option value="Express">Express (-2 Tage)</option>
-                    </select>
+                <div class="form-group form-check">
+                    <input type="checkbox" id="terms" class="form-check-input" required>
+                    <label for="terms" class="form-check-label">
+                        Ich stimme den <a href="terms.html" target="_blank">AGB</a> zu.
+                    </label>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Absenden</button>
             </form>
         </div>
     </main>
 
-    <footer class="text-white py-3">
+    <footer class="text-white">
         <div class="container text-center">
             <p>&copy; 2024 Jetstream Skiservice</p>
-            <a href="contact.html" class="text-black text-decoration-none">Kontakt</a>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
