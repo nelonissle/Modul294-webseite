@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über Uns - Jetstream Skiservice</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('about-us-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+        }
+        .about-container {
+            background-color: rgba(0, 0, 0, 0.252); /* Leicht transparenter Hintergrund */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+        }
+        .team-photo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-self: center;
+        }
+        .navbar { 
+            background-color: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;    
+        }
+        .card-body {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark navbar-expand-lg  ">
+        <div class="container">
+            <a class="navbar-brand flex-left" href="index.html">Jetstream Skiservice</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Menü umschalten">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Startseite</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="form.html">Service anmelden</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Kontakt</a>
+                    </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">Über Uns</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hauptinhalt -->
+    <main class="container py-5">
+        <div class="row g-5">
+            <!-- Mission Card -->
+            <div class="col-md-4">
+                <div class="card text-white h-100">
+                    <div class="card-body">
+                        <h2 class="card-title text-primary">Unsere Mission</h2>
+                        <p class="card-text">
+                            Unsere Mission ist es, Wintersportlern das beste Fahrerlebnis zu bieten. Egal ob Hobbyfahrer 
+                            oder Profi – wir sorgen dafür, dass deine Ski oder dein Snowboard optimal gepflegt und einsatzbereit sind.
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Werte Card -->
+            <div class="col-md-4">
+                <div class="card text-white h-100">
+                    <div class="card-body">
+                        <h2 class="card-title text-primary">Unsere Werte</h2>
+                        <ul class="list-unstyled">
+                            <li><strong>Qualität:</strong> Beste Materialien und modernste Technik.</li>
+                            <li><strong>Leidenschaft:</strong> Wir lieben den Wintersport genauso wie du.</li>
+                            <li><strong>Kundenzufriedenheit:</strong> Deine Zufriedenheit steht bei uns an erster Stelle.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Team Card -->
+            <div class="col-md-4">
+                <div class="card text-white h-100">
+                    <div class="card-body text-center">
+                        <h2 class="card-title text-primary">Unser Team</h2>
+                        <p class="card-text">
+                            Unser Team besteht aus erfahrenen Skitechnikern, die die Berge und den Wintersport lieben.
+                        </p>
+                        <img src="team-img.jpg" alt="Unser Team" class="img-fluid rounded mt-3 shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+
+    <!-- Footer -->
+    <footer class="text-dark py-3">
+        <div class="container text-center">
+            <p>&copy; 2024 Jetstream Skiservice</p>
+            <a href="contact.html" class="text-dark text-decoration-none">Kontakt</a>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
