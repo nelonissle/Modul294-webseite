@@ -10,7 +10,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: url('https://www.noleggiocadi.com/assets/images/ski-service-1-big.jpg') no-repeat center center fixed;
+            background: url('ServiceIMG.jpg') no-repeat center center fixed;
             background-size: cover;
         }
         .form-container {
@@ -20,13 +20,20 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
         a  {
-            color : black;
+            color : white;
+        }
+        .navbar { 
+            background-color: rgba(0, 0, 0, 0.432);
+            
+        }
+        header { 
+            padding-top: 20px;
         }
     </style>
  
  
  <!-- Navbar -->
- <nav class="navbar bg-light text-dark navbar-expand-lg  ">
+ <nav class="navbar navbar-dark navbar-expand-lg  ">
     <div class="container">
         <a class="navbar-brand flex-left" href="index.html">Jetstream Skiservice</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -56,7 +63,7 @@
 <body>
    
 
-    <header class="text-center text-black">
+    <header class="text-center text-light">
         <h1>Service-Anmeldung</h1>
     </header>
 
@@ -99,10 +106,12 @@
         </div>
     </main>
 
-    <footer class="text-center py-4 bg-dark text-white">
-        <p>&copy; 2024 Jetstream Skiservice</p>
+    <footer class="text-white py-3">
+        <div class="container text-center">
+            <p>&copy; 2024 Jetstream Skiservice</p>
+            <a href="contact.html" class="text-black text-decoration-none">Kontakt</a>
+        </div>
     </footer>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
