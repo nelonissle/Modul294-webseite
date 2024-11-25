@@ -8,10 +8,10 @@ document.getElementById("serviceForm").addEventListener("submit", function(e) {
     const priority = document.getElementById("priority").value;
 
     const priorityDays = {
-        "Tief": 7,
-        "Standard": 5,
-        "Express": 2
-    };
+        "Tief": 12,
+        "Standard": 7,
+        "Express": 5
+        };
 
     const today = new Date();
     today.setDate(today.getDate() + priorityDays[priority]);
