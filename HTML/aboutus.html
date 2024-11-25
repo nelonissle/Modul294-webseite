@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+
         body {
+            height: fit-content;
             background: url('about-us-bg.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #ffffff;
+            color: #ffffff65;
         }
         .about-container {
             background-color: rgba(0, 0, 0, 0.252); /* Leicht transparenter Hintergrund */
@@ -28,19 +30,22 @@
             justify-self: center;
         }
         .navbar { 
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: center;    
         }
-        .card-body {
-            background-color: rgba(0, 0, 0, 0.2);
+        .card {
+            background-color: rgba(0, 0, 0, 0.3);
         }
         
     </style>
 </head>
+
 <body>
+
+
     <!-- Navbar -->
-    <nav class="navbar navbar-dark navbar-expand-lg  ">
+    <nav class="navbar navbar-dark navbar-expand-lg ">
         <div class="container">
             <a class="navbar-brand flex-left" href="index.html">Jetstream Skiservice</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -72,9 +77,9 @@
         <div class="row g-5">
             <!-- Mission Card -->
             <div class="col-md-4">
-                <div class="card text-white h-100">
+                <div class="card text-light h-100">
                     <div class="card-body">
-                        <h2 class="card-title text-primary">Unsere Mission</h2>
+                        <h2 class="card-title text-light">Unsere Mission</h2>
                         <p class="card-text">
                             Unsere Mission ist es, Wintersportlern das beste Fahrerlebnis zu bieten. Egal ob Hobbyfahrer 
                             oder Profi – wir sorgen dafür, dass deine Ski oder dein Snowboard optimal gepflegt und einsatzbereit sind.
@@ -85,9 +90,9 @@
     
             <!-- Werte Card -->
             <div class="col-md-4">
-                <div class="card text-white h-100">
+                <div class="card text-light h-100">
                     <div class="card-body">
-                        <h2 class="card-title text-primary">Unsere Werte</h2>
+                        <h2 class="card-title text-light">Unsere Werte</h2>
                         <ul class="list-unstyled">
                             <li><strong>Qualität:</strong> Beste Materialien und modernste Technik.</li>
                             <li><strong>Leidenschaft:</strong> Wir lieben den Wintersport genauso wie du.</li>
@@ -99,9 +104,9 @@
     
             <!-- Team Card -->
             <div class="col-md-4">
-                <div class="card text-white h-100">
+                <div class="card text-light h-100">
                     <div class="card-body text-center">
-                        <h2 class="card-title text-primary">Unser Team</h2>
+                        <h2 class="card-title text-light">Unser Team</h2>
                         <p class="card-text">
                             Unser Team besteht aus erfahrenen Skitechnikern, die die Berge und den Wintersport lieben.
                         </p>
@@ -124,5 +129,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
