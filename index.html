@@ -17,8 +17,12 @@
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid #007bff;
         }
+        .carousel-inner img{
+            max-height: 70vh; /* Ist zum ändern der Bildgrösse im Karusell */
+            object-fit: cover;
+        }
+      
     </style>
 
 </head>
@@ -27,9 +31,9 @@
    
    
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg ">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Jetstream Skiservice</a>
+            <a class="navbar-brand flex-left" href="index.html">Jetstream Skiservice</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Menü umschalten">
                 <span class="navbar-toggler-icon"></span>
@@ -45,13 +49,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Kontakt</a>
                     </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">Über Uns</a>
+                </li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Header -->
-    <header class="bg-dark text-white py-4">
+    <header class=" text-black py-4">
         <div class="container text-center">
             <h1>Jetstream Skiservice</h1>
             <p>Professioneller Skiservice für den perfekten Skitag</p>
