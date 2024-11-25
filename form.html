@@ -6,12 +6,26 @@
     <title>Service-Anmeldung</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://www.noleggiocadi.com/assets/images/ski-service-1-big.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.6); /* Weniger Deckkraft */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body>
-     <!-- Navbar -->
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg ">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Jetstream Skiservice</a>
+            <a class="navbar-brand flex-left" href="index.html">Jetstream Skiservice</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Menü umschalten">
                 <span class="navbar-toggler-icon"></span>
@@ -36,48 +50,55 @@
         </div>
     </nav>
 
-    <header class="text-center py-4 bg-primary text-white">
+    <header class="text-center text-black">
         <h1>Service-Anmeldung</h1>
     </header>
-    <main class="container mt-5">
-        <form id="serviceForm">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="email">E-Mail:</label>
-                <input type="email" id="email" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Telefon:</label>
-                <input type="tel" id="phone" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="service">Dienstleistung:</label>
-                <select id="service" class="form-control" required>
-                    <option>Kleiner Service</option>
-                    <option>Grosser Service</option>
-                    <option>Rennski-Service</option>
-                    <option>Bindung montieren und einstellen</option>
-                    <option>Fell zuschneiden</option>
-                    <option>Heisswachsen</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="priority">Priorität:</label>
-                <select id="priority" class="form-control" required>
-                    <option value="Tief">Tief (+5 Tage)</option>
-                    <option value="Standard">Standard (7 Tage)</option>
-                    <option value="Express">Express (-2 Tage)</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Absenden</button>
-        </form>
+
+    <main class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="form-container">
+            <form id="serviceForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-Mail:</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefon:</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Dienstleistung:</label>
+                    <select id="service" class="form-control" required>
+                        <option>Kleiner Service</option>
+                        <option>Grosser Service</option>
+                        <option>Rennski-Service</option>
+                        <option>Bindung montieren und einstellen</option>
+                        <option>Fell zuschneiden</option>
+                        <option>Heisswachsen</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Priorität:</label>
+                    <select id="priority" class="form-control" required>
+                        <option value="Tief">Tief (+5 Tage)</option>
+                        <option value="Standard">Standard (7 Tage)</option>
+                        <option value="Express">Express (-2 Tage)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Absenden</button>
+            </form>
+        </div>
     </main>
+
     <footer class="text-center py-4 bg-dark text-white">
         <p>&copy; 2024 Jetstream Skiservice</p>
     </footer>
-    <script src="app.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
