@@ -8,10 +8,10 @@ document.getElementById("serviceForm").addEventListener("submit", function(e) {
     const priority = document.getElementById("priority").value;
 
     const priorityDays = {
-        "Tief": 7,
-        "Standard": 5,
-        "Express": 2
-    };
+        "Tief": 12,
+        "Standard": 7,
+        "Express": 5
+        };
 
     const today = new Date();
     today.setDate(today.getDate() + priorityDays[priority]);
@@ -31,7 +31,7 @@ document.getElementById("serviceForm").addEventListener("submit", function(e) {
     console.log(data);
 
     // Senden an Backend (POST-Request)
-    fetch("http://localhost:5000/api/registration", {
+    fetch("http://localhost:5013/api/ServiceOrders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -39,3 +39,5 @@ document.getElementById("serviceForm").addEventListener("submit", function(e) {
       .then(result => alert("Anmeldung erfolgreich!"))
       .catch(error => console.error("Fehler:", error));
 });
+
+
