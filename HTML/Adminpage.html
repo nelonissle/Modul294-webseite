@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Orders</title>
+    <!-- Use only the Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Jetstream Skiservice</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Startseite</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="form.html">Service anmelden</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Kontakt</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="aboutus.html">Über Uns</a>
+            </li>
+            <li class="nav-item-login">
+              <a class="nav-link active" aria-current="page" href="login.html"
+                >Login</a
+              >
+            </li>
+            <li class="nav-item-register">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="register.html"
+                >Register</a
+              >
+            </li>
+            <li class="nav-item-admin">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="Adminpage.html"
+                >Adminpage</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <h1>Service Orders</h1>
+
+      <!-- Token Input -->
+      <div class="mb-3">
+        <label for="authToken" class="form-label">Enter Your Token</label>
+        <input
+          type="text"
+          id="authToken"
+          class="form-control"
+          placeholder="Paste your token here"
+        />
+        <button class="btn btn-primary mt-2" onclick="validateToken()">
+          Validate Token
+        </button>
+      </div>
+
+      <div id="authMessage" class="text-danger"></div>
+
+      <!-- Table -->
+      <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Priority</th>
+            <th>Service</th>
+            <th>Assigned User ID</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="serviceOrdersTable">
+          <!-- Rows will be dynamically populated here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal Structure -->
+    <div
+      class="modal fade"
+      id="updateModal"
+      tabindex="-1"
+      aria-labelledby="updateModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateModalLabel">
+              Update Service Order
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="updateOrderId" class="form-label">Order ID</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="updateOrderId"
+                  readonly
+                />
+              </div>
+              <div class="mb-3">
+                <label for="updateName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="updateName" />
+              </div>
+              <div class="mb-3">
+                <label for="updateEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="updateEmail" />
+              </div>
+              <div class="mb-3">
+                <label for="updatePhone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="updatePhone" />
+              </div>
+              <div class="mb-3">
+                <label for="updatePriority" class="form-label">Priority</label>
+                <input type="text" class="form-control" id="updatePriority" />
+              </div>
+              <div class="mb-3">
+                <label for="updateService" class="form-label">Service</label>
+                <input type="text" class="form-control" id="updateService" />
+              </div>
+              <div class="mb-3">
+                <label for="updateAssignedUser" class="form-label"
+                  >Assigned User</label
+                >
+                <select id="updateAssignedUser" class="form-control">
+                  <!-- Dropdown will be populated dynamically -->
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="updateStatus" class="form-label">Status</label>
+                <select id="updateStatus" class="form-control">
+                  <option value="Offen">Offen</option>
+                  <option value="InArbeit">In Arbeit</option>
+                  <option value="Abgeschlossen">Abgeschlossen</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="saveUpdate()"
+            >
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const apiUrl = "http://localhost:5013/api/ServiceOrders"; // Replace with your API endpoint
+      let authToken = null; // Variable to store the token
+
+      // Function to validate the token
+      async function validateToken() {
+        const tokenInput = document.getElementById("authToken").value;
+
+        if (!tokenInput) {
+          document.getElementById("authMessage").textContent =
+            "Token cannot be empty.";
+          return;
+        }
+
+        try {
+          const response = await fetch(apiUrl, {
+            headers: {
+              Authorization: `Bearer ${tokenInput}`,
+            },
+          });
+
+          if (response.ok) {
+            authToken = tokenInput; // Store the valid token
+            document.getElementById("authMessage").textContent =
+              "Token is valid.";
+            document
+              .getElementById("authMessage")
+              .classList.remove("text-danger");
+            document
+              .getElementById("authMessage")
+              .classList.add("text-success");
+            fetchServiceOrders(); // Fetch data after successful validation
+          } else {
+            throw new Error("Invalid token.");
+          }
+        } catch (error) {
+          authToken = null;
+          document.getElementById("authMessage").textContent =
+            "Invalid token. Please try again.";
+          document
+            .getElementById("authMessage")
+            .classList.remove("text-success");
+          document.getElementById("authMessage").classList.add("text-danger");
+        }
+      }
+
+      // Function to fetch and display service orders
+      async function fetchServiceOrders() {
+        if (!authToken) return;
+
+        try {
+          const response = await fetch(apiUrl, {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+
+          const serviceOrders = await response.json();
+          const tableBody = document.getElementById("serviceOrdersTable");
+          tableBody.innerHTML = ""; // Clear existing rows
+
+          serviceOrders.forEach((order) => {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${order.orderId}</td>
+                <td>${order.name || ""}</td>
+                <td>${order.email || ""}</td>
+                <td>${order.phone || ""}</td>
+                <td>${order.priority || ""}</td>
+                <td>${order.service || ""}</td>
+                <td>${
+                  order.assignedUser ? order.assignedUser.name : "Not Assigned"
+                }</td>
+                <td>${order.status || "Not Set"}</td>
+                <td>
+                  <button class="btn btn-primary btn-sm" onclick="openUpdateModal(
+                    ${order.orderId}, 
+                    '${order.name}', 
+                    '${order.email}', 
+                    '${order.phone}', 
+                    '${order.priority}', 
+                    '${order.service}', 
+                    '${order.assignedUser ? order.assignedUser.userId : ""}', 
+                    '${order.status || ""}')">Edit</button>
+                  <button class="btn btn-danger btn-sm" onclick="deleteOrder(${
+                    order.orderId
+                  })">Delete</button>
+                </td>
+              `;
+            tableBody.appendChild(row);
+          });
+        } catch (error) {
+          console.error("Error fetching service orders:", error);
+          alert("Failed to load service orders.");
+        }
+      }
+// Function to populate the Assigned User dropdown
+async function populateAssignedUserDropdown() {
+  try {
+    const response = await fetch("http://localhost:5013/api/Users", {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
+
+    // Check if the response is valid
+    if (!response.ok) {
+      console.error("Failed to fetch users. Status:", response.status);
+      return;
+    }
+
+    const users = await response.json();
+
+    // Log the raw response to check if the users are fetched properly
+    console.log("Fetched users:", users);
+
+    const assignedUserSelect = document.getElementById("updateAssignedUser");
+
+    // Clear existing options in the dropdown
+    assignedUserSelect.innerHTML = "<option value=''>Select User</option>";
+
+    // Filter users to only include those with IDs between 1 and 11, excluding user 2
+    const filteredUsers = users.filter(user => user.userId >= 1 && user.userId <= 11 && user.userId !== 2);
+
+    // Log the filtered users to check if the filtering works
+    console.log("Filtered users (IDs 1-11, excluding user 2):", filteredUsers);
+
+    // Check if filtered users are found
+    if (filteredUsers.length === 0) {
+      console.log("No users found after filtering.");
+    }
+
+    // Add filtered users to the dropdown
+    filteredUsers.forEach((user) => {
+      const option = document.createElement("option");
+      option.value = user.userId;
+      option.textContent = user.name || `User ${user.userId}`; // Add default text if name is missing
+      assignedUserSelect.appendChild(option);
+    });
+
+    // Check if the dropdown is populated
+    console.log("Dropdown populated with users:", assignedUserSelect.innerHTML);
+
+  } catch (error) {
+    console.error("Error fetching users:", error);
+  }
+}
+
+   
+
+
+      // Function to open the modal for updating the service order
+      function openUpdateModal(
+        orderId,
+        name,
+        email,
+        phone,
+        priority,
+        service,
+        assignedUser,
+        status
+      ) {
+        document.getElementById("updateOrderId").value = orderId;
+        document.getElementById("updateName").value = name;
+        document.getElementById("updateEmail").value = email;
+        document.getElementById("updatePhone").value = phone;
+        document.getElementById("updatePriority").value = priority;
+        document.getElementById("updateService").value = service;
+        document.getElementById("updateAssignedUser").value = assignedUser;
+        document.getElementById("updateStatus").value = status;
+
+        populateAssignedUserDropdown(); // Populate dropdown with users
+        const modal = new bootstrap.Modal(
+          document.getElementById("updateModal")
+        );
+        modal.show();
+      }
+
+      async function saveUpdate() {
+        const orderId = document.getElementById("updateOrderId").value;
+        const name = document.getElementById("updateName").value;
+        const email = document.getElementById("updateEmail").value;
+        const phone = document.getElementById("updatePhone").value;
+        const priority = document.getElementById("updatePriority").value;
+        const service = document.getElementById("updateService").value;
+        //const assignedUser = document.getElementById("updateAssignedUser").value;
+        const status = document.getElementById("updateStatus").value;
+        // Correctly retrieve the assignedUserId value from the dropdown
+        const assignedUserId = document.getElementById("updateAssignedUser").value;
+
+        const updatedOrder = {
+          orderId: orderId,
+          name: name,
+          email: email,
+          phone: phone,
+          priority: priority,
+          service: service,
+          assignedUser: assignedUserId ? { userId: assignedUserId } : null, // If assignedUserId is set, assign it, otherwise set null
+          status: status,
+        };
+
+        console.log("Updated Order Data:", updatedOrder); // Log the updated order data
+
+        try {
+          const response = await fetch(`${apiUrl}/${orderId}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${authToken}`,
+            },
+            body: JSON.stringify(updatedOrder),
+          });
+
+          if (response.ok) {
+            alert("Order updated successfully");
+            fetchServiceOrders(); // Refresh the order list
+            const modal = bootstrap.Modal.getInstance(
+              document.getElementById("updateModal")
+            );
+            modal.hide(); // Close the modal
+          } else {
+            const errorData = await response.json();
+            console.error("Failed to update order:", errorData); // Log server response on error
+            throw new Error("Failed to update order.");
+          }
+        } catch (error) {
+          console.error("Error updating order:", error);
+          alert("Failed to update order.");
+        }
+      }
+
+      // Function to delete an order
+      async function deleteOrder(orderId) {
+        if (confirm("Are you sure you want to delete this order?")) {
+          try {
+            const response = await fetch(`${apiUrl}/${orderId}`, {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+              },
+            });
+
+            if (response.ok) {
+              alert("Order deleted successfully");
+              fetchServiceOrders(); // Refresh the order list
+            } else {
+              throw new Error("Failed to delete order.");
+            }
+          } catch (error) {
+            console.error("Error deleting order:", error);
+            alert("Failed to delete order.");
+          }
+        }
+      }
+    </script>
+
+    <!-- Include Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

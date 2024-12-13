@@ -1,4 +1,4 @@
-document.getElementById("UserLoginForm").addEventListener("submit", function(e) {
+document.getElementById("UserForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
     const username = document.getElementById("username").value;
@@ -12,7 +12,7 @@ document.getElementById("UserLoginForm").addEventListener("submit", function(e) 
     console.log(data);
 
     // Senden an Backend (POST-Request)
-    fetch("http://localhost:5013/api/Users/Login", {
+    fetch("http://localhost:5013/api/Users/Register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -20,3 +20,5 @@ document.getElementById("UserLoginForm").addEventListener("submit", function(e) 
       .then(result => alert("Anmeldung erfolgreich!"))
       .catch(error => console.error("Fehler:", error));
 });
+
+
