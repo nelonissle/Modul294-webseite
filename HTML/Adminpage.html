@@ -53,13 +53,14 @@
                 >Register</a
               >
             </li>
-            <li class="nav-item-admin">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="Adminpage.html"
-                >Adminpage</a
-              >
+            <li class="nav-item-admin" id="adminFeatures" style="display: none;">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="Adminpage.html"
+                  >Adminpage</a
+                >
+              </li>
             </li>
           </ul>
         </div>
@@ -239,7 +240,74 @@
             .classList.remove("text-success");
           document.getElementById("authMessage").classList.add("text-danger");
         }
+        // Check if user is logged in and has the correct role (admin)
+window.onload = function() {
+        const storedToken = localStorage.getItem("authToken");
+        if (storedToken) {
+          authToken = storedToken;
+          showAdminFeatures(authToken);
+        }
+      };
+
+      // Function to validate the token
+      async function validateToken() {
+        const tokenInput = document.getElementById("authToken").value;
+
+        if (!tokenInput) {
+          document.getElementById("authMessage").textContent =
+            "Token cannot be empty.";
+          return;
+        }
+
+        try {
+          const response = await fetch(apiUrl, {
+            headers: {
+              Authorization: `Bearer ${tokenInput}`,
+            },
+          });
+
+          if (response.ok) {
+            authToken = tokenInput; // Store the valid token
+            document.getElementById("authMessage").textContent =
+              "Token is valid.";
+            document
+              .getElementById("authMessage")
+              .classList.remove("text-danger");
+            document
+              .getElementById("authMessage")
+              .classList.add("text-success");
+            localStorage.setItem("authToken", tokenInput); // Store token in local storage
+            fetchServiceOrders(); // Fetch data after successful validation
+            showAdminFeatures(tokenInput); // Check admin features access
+          } else {
+            throw new Error("Invalid token.");
+          }
+        } catch (error) {
+          authToken = null;
+          document.getElementById("authMessage").textContent =
+            "Invalid token. Please try again.";
+          document
+            .getElementById("authMessage")
+            .classList.remove("text-success");
+          document.getElementById("authMessage").classList.add("text-danger");
+        }
       }
+
+      // Function to show admin features
+      function showAdminFeatures(token) {
+        try {
+          const userData = JSON.parse(atob(token.split(".")[1])); // Decode JWT payload
+          if (userData.role !== "admin") {
+            document.getElementById("adminFeatures").style.display = "none"; // Hide admin features if not admin
+          } else {
+            document.getElementById("adminFeatures").style.display = "block"; // Show admin features if admin
+          }
+        } catch (error) {
+          console.error("Invalid token:", error);
+          document.getElementById("adminFeatures").style.display = "none"; // Fallback: hide if error occurs
+        }
+      }
+    }
 
       // Function to fetch and display service orders
       async function fetchServiceOrders() {
@@ -291,7 +359,7 @@
           console.error("Error fetching service orders:", error);
           alert("Failed to load service orders.");
         }
-      }
+    }
 // Function to populate the Assigned User dropdown
 async function populateAssignedUserDropdown() {
   try {
@@ -342,11 +410,8 @@ async function populateAssignedUserDropdown() {
   } catch (error) {
     console.error("Error fetching users:", error);
   }
-}
 
-   
-
-
+    }
       // Function to open the modal for updating the service order
       function openUpdateModal(
         orderId,
@@ -449,7 +514,9 @@ async function populateAssignedUserDropdown() {
             alert("Failed to delete order.");
           }
         }
-      }
+    }
+      
+  showAdminFeatures(); // Call the function when the page loads
     </script>
 
     <!-- Include Bootstrap 5 JS -->
