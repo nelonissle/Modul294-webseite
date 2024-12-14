@@ -2,6 +2,7 @@
 async function validateToken(myApiUrl) {
     const tokenInput = document.getElementById("authToken").value;
 
+    console.log("DEBUG: Token is ", tokenInput);
     if (!tokenInput) {
         document.getElementById("authMessage").textContent =
             "Error: Token cannot be empty.";
@@ -14,6 +15,7 @@ async function validateToken(myApiUrl) {
                 Authorization: `Bearer ${tokenInput}`,
             },
         });
+        console.log("DEBUG: Response is ", response);
 
         if (response.ok) {
             authToken = tokenInput; // Store the valid token
