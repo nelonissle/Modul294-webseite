@@ -32,7 +32,7 @@
   </nav>
 
   <div class="container mt-5">
-    <h1>Service Orders</h1>
+    <h1>Admin Page</h1>
 
     <!-- Token Input -->
     <div class="mb-3">
@@ -138,24 +138,8 @@
       const storedToken = localStorage.getItem("authToken");
       if (storedToken) {
         authToken = storedToken;
-        showAdminFeatures(authToken);
       }
     };
-
-    // Function to show admin features
-    function showAdminFeatures(token) {
-      try {
-        const userData = JSON.parse(atob(token.split(".")[1])); // Decode JWT payload
-        if (userData.role !== "admin") {
-          document.getElementById("adminFeatures").style.display = "none"; // Hide admin features if not admin
-        } else {
-          document.getElementById("adminFeatures").style.display = "block"; // Show admin features if admin
-        }
-      } catch (error) {
-        console.error("Invalid token:", error);
-        document.getElementById("adminFeatures").style.display = "none"; // Fallback: hide if error occurs
-      }
-    }
 
     // Function to fetch and display service orders
     async function fetchServiceOrders() {
