@@ -31,7 +31,16 @@ document.getElementById("serviceForm").addEventListener("submit", function(e) {
     console.log(data);
 
     // Senden an Backend (POST-Request)
+    /*
     fetch("http://localhost:5013/api/ServiceOrders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    }).then(response => response.json())
+      .then(result => alert("Anmeldung erfolgreich!"))
+      .catch(error => console.error("Fehler:", error));
+      */
+      fetch("http://localhost:5013/api/OrderService", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
