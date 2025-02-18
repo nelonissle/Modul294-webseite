@@ -1,43 +1,35 @@
-// Function to validate the token
-async function validateToken(myApiUrl) {
-    const tokenInput = document.getElementById("authToken").value;
+const apiUrl = "http://localhost:5013/api/ServiceOrders"; // Update with your actual API
 
-    console.log("DEBUG: Token is ", tokenInput);
-    if (!tokenInput) {
-        document.getElementById("authMessage").textContent =
-            "Error: Token cannot be empty.";
+// 🔹 Check user authentication on page load
+window.onload = async function () {
+    const storedToken = localStorage.getItem("authToken");
+
+    if (!storedToken) {
+        window.location.href = "index.html"; // Redirect if no token
         return;
     }
 
-    try {
-        const response = await fetch(myApiUrl, {
-            headers: {
-                Authorization: `Bearer ${tokenInput}`,
-            },
-        });
-        console.log("DEBUG: Response is ", response);
-
-        if (response.ok) {
-            authToken = tokenInput; // Store the valid token
-            document.getElementById("authMessage").textContent =
-                "Token is valid.";
-            document
-                .getElementById("authMessage")
-                .classList.remove("text-danger");
-            document
-                .getElementById("authMessage")
-                .classList.add("text-success");
-            localStorage.setItem("authToken", tokenInput); // Store token in local storage
-        } else {
-            throw new Error("Error: Invalid token.");
-        }
-    } catch (error) {
-        authToken = null;
-        document.getElementById("authMessage").textContent =
-            "Error: Invalid token. Please try again.";
-        document
-            .getElementById("authMessage")
-            .classList.remove("text-success");
-        document.getElementById("authMessage").classList.add("text-danger");
+    const userRole = getUserRoleFromToken(storedToken);
+    if (userRole !== "Admin") {
+        alert("Access Denied: Admins only.");
+        window.location.href = "index.html"; // Redirect unauthorized users
+    } else {
+        document.getElementById("adminFeatures").style.display = "block";
     }
+};
+
+// 🔹 Extract user role from JWT token
+function getUserRoleFromToken(token) {
+    try {
+        const payload = JSON.parse(atob(token.split(".")[1])); // Decode JWT payload
+        return payload.role || null;
+    } catch (error) {
+        return null;
+    }
+}
+
+// 🔹 Logout function
+function logout() {
+    localStorage.removeItem("authToken");
+    window.location.href = "index.html"; // Redirect to homepage
 }
