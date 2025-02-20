@@ -4,10 +4,7 @@ document.getElementById("UserLoginForm").addEventListener("submit", async functi
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    const data = {
-        username,
-        password
-    };
+    const data = { username, password };
 
     console.log("Sending login data:", data);
 
@@ -30,12 +27,10 @@ document.getElementById("UserLoginForm").addEventListener("submit", async functi
         const result = await response.json();
 
         if (result.token) {
-            // Store the token in localStorage
-            localStorage.setItem("authToken", result.token);
+            localStorage.setItem("authToken", result.token); // 🔥 Store JWT token
 
             alert("Login successful!");
-            // Redirect to the admin page
-            window.location.href = "Adminpage.html";
+            window.location.href = "Adminpage.html"; // Redirect to admin page
         } else {
             alert("Login failed. Token not received.");
         }

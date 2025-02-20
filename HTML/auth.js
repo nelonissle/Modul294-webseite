@@ -1,11 +1,12 @@
-const apiUrl = "http://localhost:5013/api/ServiceOrders"; // Update with your actual API
+const apiUrl = "http://localhost:5013/api/ServiceOrders"; // Adjust to your API
 
 // 🔹 Check user authentication on page load
 window.onload = async function () {
     const storedToken = localStorage.getItem("authToken");
 
-    if (!storedToken) {
-        window.location.href = "index.html"; // Redirect if no token
+    if (!storedToken || isTokenExpired(storedToken)) {
+        alert("Session expired. Please log in again.");
+        logout();
         return;
     }
 
@@ -28,8 +29,13 @@ function getUserRoleFromToken(token) {
     }
 }
 
-// 🔹 Logout function
-function logout() {
-    localStorage.removeItem("authToken");
-    window.location.href = "index.html"; // Redirect to homepage
+// 🔹 Check if the token is expired
+function isTokenExpired(token) {
+    try {
+        const payload = JSON.parse(atob(token.split(".")[1])); // Decode JWT
+        const expiry = payload.exp * 1000; // Convert to milliseconds
+        return Date.now() >= expiry; // 🔥 True if expired
+    } catch (error) {
+        return true; // Assume expired if decoding fails
+    }
 }
